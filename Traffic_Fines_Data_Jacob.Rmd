@@ -1,0 +1,25 @@
+---
+title: "Traffic_Fines_Data_Jacob"
+author: "Jacob"
+date: '2022-07-28'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Test script for data summaries
+
+```{r traffic_data_load}
+traffic_fines <- read.csv(file.path("C:/Users/ryanjm/Documents/ABS Mini Hackathon 2022/Traffic_camera_offences_and_fines.csv"))
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+
+```
+
