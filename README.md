@@ -2,7 +2,7 @@
 
 **Team:** Bring Git On
 
-Team members:   
+**Team members**:   
 + ashwin131    
 + jar31   
 + julowi  
