@@ -1,7 +1,12 @@
-# mini_hackathon
-2022 mini-hackathon challenge
+# 2022 mini-hackathon challenge 
 
-Team members:  
-+ 
-+ 
-+
+**Team:** Bring Git On
+
+Team members:   
++ ashwin131    
++ jar31   
++ julowi  
++ mariegrimmond  
++ mlm  
++ SeanMalcolm  
++ TheBigNords 
