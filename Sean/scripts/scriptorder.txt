@@ -1,6 +1,0 @@
-To produce visualsition:
-	1. Run geographic_integration.py
-	2. Run incident_grouping.py
-	3. Run map_visualisation.R in Rstudio
-	4. Run m in Rstudio console
-	5. Export image in viewer pane in Rstudio
