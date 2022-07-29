@@ -1,3 +1,4 @@
+import os
 
 import pandas as pd
 import re
@@ -8,9 +9,9 @@ ALPHABET = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'
 
 if __name__ == '__main__':
 	
-    
-    df_data = pd.read_csv("data/Traffic_camera_offences_and_fines.csv")
-    df_location = pd.read_csv("data/Traffic_Camera_Locations.csv")
+        
+    df_data = pd.read_csv(os.path.dirname(__file__) + '/../data/Traffic_camera_offences_and_fines.csv')
+    df_location = pd.read_csv(os.path.dirname(__file__) + '/../data/Traffic_Camera_Locations.csv')
     df_location = df_location.dropna()
     
     #Create a dictionary with location codes as keys and coordinates as values
@@ -45,4 +46,4 @@ if __name__ == '__main__':
     df_data['lat'] = df_data.apply(lambda row : assign_lat(row), axis=1)
     df_data['lon'] = df_data.apply(lambda row : assign_lon(row), axis=1)
     
-    df_data.to_csv("data/traffic_camera_offences_geographic.csv")
+    df_data.to_csv(os.path.dirname(__file__) + "/../data/traffic_camera_offences_geographic.csv")

@@ -4,7 +4,15 @@ library(dplyr)
 library(ggplot2)
 library(leaflet)
 
-df <- read.csv("data/camera_data.csv")
+
+library(htmlwidgets)
+
+
+
+
+filename <- paste(dirname(getwd()), '/data/camera_data.csv', sep = "")
+
+df <- read.csv(filename)
 df <- na.omit(df)
 
 df$average_pen <- df$total_pen / df$total_incidents
@@ -23,7 +31,6 @@ qpal_labs <- paste(lag(qpal_labs), qpal_labs, sep = " - ")[-1] # first lag is NA
 # Create the map
 m <- leaflet(df) %>%
   addProviderTiles(providers$CartoDB.Positron) %>%
-  addMarkers(lng=149.120783, lat=-35.308939) %>%
   addCircles(lat = ~lat, 
              lng = ~lon, 
              weight= 0,
@@ -35,4 +42,7 @@ m <- leaflet(df) %>%
             labels=qpal_labs,
             title="Average Penalty",
             labFormat = labelFormat(prefix = "$"))
+
+filename_map <- paste(dirname(getwd()), '/outputs/ACT_traffic_incidents.html', sep = "")
+saveWidget(m, file=filename_map)
   
