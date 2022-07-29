@@ -1,25 +1,74 @@
 ---
-title: "Traffic_Fines_Data_Jacob"
+title: "Traffic Fines Data Jacob"
 author: "Jacob"
 date: '2022-07-28'
 output: html_document
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse")
+library("lubridate")
+library("ggplot2")
+library("shiny")
 ```
 
 ## Test script for data summaries
 
 ```{r traffic_data_load}
 traffic_fines <- read.csv(file.path("C:/Users/ryanjm/Documents/ABS Mini Hackathon 2022/Traffic_camera_offences_and_fines.csv"))
+
+# Prepare Dataset
+traffic_fines <- traffic_fines %>%
+  mutate(Offence_Month=parse_date_time(Offence_Month,"bY")) %>% # change Month to date format
+  mutate(Rego_State=as.factor(Rego_State))
+
+# Create Counts Data
+monthly_fines <- traffic_fines %>%
+  group_by(Offence_Month, Rego_State) %>%
+  summarise(offence_count=n())
+
+# choose_state_line <- function(state, .data=traffic_fines, timevar=Offence_Month){
+#   
+#   #all_times <- unique(.data$timevar)
+# 
+#   timestatecount <- .data %>%
+#   filter(Rego_State==state) %>%
+#   group_by({{ timevar }}) %>%
+#   summarise(obscount=n())
+#   
+#   return(timestatecount)
+# }
+
+getstates <- as.vector(levels(traffic_fines$Rego_State),mode="list")
+names(getstates) <- levels(traffic_fines$Rego_State)
+names(getstates)[1] <- "Missing"
 ```
 
 ## Including Plots
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
+```{r plotdata, echo=FALSE}
+
+# Add checkboxes for State
+checkboxGroupInput("checkGroup", 
+                            h3("Select Series to Plot"), 
+                            choices = getstates,
+                            selected = "ACT"
+                   )
+  
+renderPlot({
+  
+  # Filter data based on ueser input
+  monthly_fines <- monthly_fines %>% filter(Rego_State %in% input$checkGroup)
+  
+  ggplot(data=monthly_fines, aes(x=Offence_Month, y=offence_count, col=Rego_State) ) +
+    geom_line() +
+    geom_smooth() 
+
+})
 
 ```
 
