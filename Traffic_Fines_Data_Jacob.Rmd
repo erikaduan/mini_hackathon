@@ -48,9 +48,19 @@ names(getstates)[1] <- "Missing"
 
 ## Offences Per Month Plot
 
-You can also embed plots, for example:
+```{r facet_plots}
+ggplot(data=monthly_fines %>% filter(Rego_State %in% c("ACT","QLD","NSW","WA","NT")), aes(x=Offence_Month, y=offence_count) ) +
+  geom_line() +
+  facet_grid(Rego_State ~ .) +
+  ggtitle("Number of Offences By Time and Vehicle Registration State") + xlab("Time") + ylab("Offence Count")
+
+ggsave("Offence_timeline_state")
+
+```
 
 ```{r plotdata, echo=FALSE}
+# TODO turn into facet plot
+# TODO screenshot interactive app
 
 # Add checkboxes for State
 checkboxGroupInput("checkGroup", 
@@ -62,9 +72,9 @@ checkboxGroupInput("checkGroup",
 renderPlot({
   
   # Filter data based on ueser input
-  monthly_fines <- monthly_fines %>% filter(Rego_State %in% input$checkGroup)
+  monthly_fines_filtered <- monthly_fines %>% filter(Rego_State %in% input$checkGroup)
   
-  ggplot(data=monthly_fines, aes(x=Offence_Month, y=offence_count, col=Rego_State) ) +
+  ggplot(data=monthly_fines_filtered, aes(x=Offence_Month, y=offence_count, col=Rego_State) ) +
     geom_line() +
     geom_smooth() 
 
