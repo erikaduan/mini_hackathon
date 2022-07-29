@@ -44,5 +44,5 @@ m <- leaflet(df) %>%
             labFormat = labelFormat(prefix = "$"))
 
 filename_map <- paste(dirname(getwd()), '/outputs/ACT_traffic_incidents.html', sep = "")
-saveWidget(m, file=filename_map)
+#saveWidget(m, file=filename_map)
   
