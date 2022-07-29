@@ -52,12 +52,18 @@ Sentence 2
 
 ***
 
-Sentence 3  
+Sentence 3 
+
+![](./outputs/Average_withdrawn_amount.PNG)   
+
+*** 
+
+Sentence 4  
 
 ![](./outputs/ashwin_timeseries.png)
 
 ***
 
-Sentence 4  
+Sentence 5  
 
 ![](./outputs/marie_time_series_pplot.png)
