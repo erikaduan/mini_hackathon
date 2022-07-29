@@ -69,3 +69,9 @@ This plot shows the difference in penalities across time. Lots of penalities sud
 ![](./outputs/marie_time_series_pplot.png)
 
 *** 
+
+These plots break down the type of offence committed by camera type and client type. 
+ 
+![](./outputs/OffenceCOuntByCameraType.png)
+
+![](./outputs/OffenceCOuntByClientType.png)
