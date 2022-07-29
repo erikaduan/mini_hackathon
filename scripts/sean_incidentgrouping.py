@@ -1,10 +1,13 @@
 import pandas as pd
-
+import os.path
 
 
 if __name__ == '__main__':
     
-    df = pd.read_csv("data/traffic_camera_offences_geographic.csv")
+
+    
+    
+    df = pd.read_csv(os.path.dirname(__file__) + "/../data/traffic_camera_offences_geographic.csv")
     df = df.dropna()
 
     camera_counts = {}
@@ -29,6 +32,6 @@ if __name__ == '__main__':
     #Create dataset with each camera as one row
     df_cameras = pd.DataFrame.from_dict(camera_counts, orient='index')
     
-    df_cameras.to_csv("data/camera_data.csv")
+    df_cameras.to_csv(os.path.dirname(__file__) + "/../data/camera_data.csv")
             
     

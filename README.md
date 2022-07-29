@@ -1,6 +1,6 @@
 # 2022 mini-hackathon challenge 
 
-**Team:** Bring Git On
+**Team:** Bring Git On  
 
 **Team members**:   
 + ashwin131 - data visualisation    
@@ -13,9 +13,9 @@
 
 **Challenge 2:** Open dataset  
 
-https://data.gov.au/dataset/ds-act-https%3A%2F%2Fwww.data.act.gov.au%2Fapi%2Fviews%2F2sx9-4wg7/details?q   
+The dataset we chose was the ACT traffic camera offenses public dataset, which can be found [here](https://data.gov.au/dataset/ds-act-https%3A%2F%2Fwww.data.act.gov.au%2Fapi%2Fviews%2F2sx9-4wg7/details?q). 
 
-**Description of data**
+# Description of data
 
 The dataset contains information about the traffic offenses 
 caught by cameras in ACT by motorists and the fines issued to them.
@@ -38,3 +38,32 @@ Each observation lists the following details about the traffic offenses and asso
 10. Sum of withdrawal amount in the month
 11. Sum of withdrawal count in the month
  
+# Visualisation outputs   
+
+Sentence 1
+
+![](./outputs/ACT_traffic_penalties.png)
+
+***
+
+Sentence 2  
+
+![](./outputs/jacob_offence_time_state.png)
+
+***
+
+Sentence 3 
+
+![](./outputs/Average_withdrawn_amount.PNG)   
+
+*** 
+
+Sentence 4  
+
+![](./outputs/ashwin_timeseries.png)
+
+***
+
+Sentence 5  
+
+![](./outputs/marie_time_series_pplot.png)
