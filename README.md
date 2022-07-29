@@ -40,30 +40,32 @@ Each observation lists the following details about the traffic offenses and asso
  
 # Visualisation outputs   
 
-Sentence 1
+This beautiful map just speaks for itself and shows the traffic offence hotspots within the ACT. 
 
 ![](./outputs/ACT_traffic_penalties.png)
 
 ***
 
-Sentence 2  
+This time series plot shows that the majority of offenders are local, but NSW contributes a fair bit too.  
 
 ![](./outputs/jacob_offence_time_state.png)
 
 ***
 
-Sentence 3 
+This plot is meant to help those with recent traffic offenses figure out if they have a chance at withdrawing their claim!  
 
 ![](./outputs/Average_withdrawn_amount.PNG)   
 
 *** 
 
-Sentence 4  
+This plot shows the amount of $$$ each offence costs on average. There's some major pricy outliers too! 
 
 ![](./outputs/ashwin_timeseries.png)
 
 ***
 
-Sentence 5  
+This plot shows the difference in penalities across time. Lots of penalities suddenly appearing in 2021!
 
 ![](./outputs/marie_time_series_pplot.png)
+
+*** 
