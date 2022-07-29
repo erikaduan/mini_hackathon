@@ -31,13 +31,14 @@ if __name__ == '__main__':
         
     def assign_lat(row):
         try:
-            return(codes_dict[str(row['Location_Code'])]['lat'])
+            
+            return(codes_dict[str(row['Location_Code']).zfill(4)]['lat'])
         except KeyError:
-            pass
+            print(str(row['Location_Code']))
             
     def assign_lon(row):
         try:
-            return(codes_dict[str(row['Location_Code'])]['lon'])
+            return(codes_dict[str(row['Location_Code']).zfill(4)]['lon'])
         except KeyError:
             pass
         

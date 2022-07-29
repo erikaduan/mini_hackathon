@@ -17,8 +17,8 @@ The dataset we chose was the ACT traffic camera offenses public dataset, which c
 
 # Description of data
 
-The dataset contains information about the traffic camera offenses 
-conducted in ACT by motorists and the fines issued to them.
+The dataset contains information about the traffic offenses 
+caught by cameras in ACT by motorists and the fines issued to them.
 
 ![accident](giphy.gif)
 
@@ -26,8 +26,8 @@ Dataset contains 112,649 records over the period from *July 2010
 to June 2022*.
 
 Each observation lists the following details about the traffic offenses and associated fines:
-1. Month of the incident (MMM-YY format)
-2. Vehicle registration state (State name using 3 letter abbreviations)
+1. Month of the incident (*MMM-YY format*)
+2. Vehicle registration state (*In addition to the states and territories in Australia, there are few special categories in this feature such as* **ARM, FED, NAV, RAF** )
 3. Client type 
 4. Tye of the camera that detected the offending vehicle
 5. Location code
