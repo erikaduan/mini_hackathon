@@ -46,7 +46,7 @@ names(getstates) <- levels(traffic_fines$Rego_State)
 names(getstates)[1] <- "Missing"
 ```
 
-## Including Plots
+## Offences Per Month Plot
 
 You can also embed plots, for example:
 
