@@ -1,5 +1,5 @@
 ---
-title: "Traffic Fines Data Jacob"
+title: "Traffic Fines Data Shiny"
 author: "Jacob"
 date: '2022-07-28'
 output: html_document
@@ -12,12 +12,13 @@ library("tidyverse")
 library("lubridate")
 library("ggplot2")
 library("shiny")
+library("here")
 ```
 
 ## Test script for data summaries
 
-```{r traffic_data_load}
-traffic_fines <- read.csv(file.path("C:/Users/ryanjm/Documents/ABS Mini Hackathon 2022/Traffic_camera_offences_and_fines.csv"))
+```{r traffic_data_load, echo=FALSE}
+traffic_fines <- read.csv(file.path(here("data"),"/Traffic_camera_offences_and_fines.csv"))
 
 # Prepare Dataset
 traffic_fines <- traffic_fines %>%
@@ -29,18 +30,7 @@ monthly_fines <- traffic_fines %>%
   group_by(Offence_Month, Rego_State) %>%
   summarise(offence_count=n())
 
-# choose_state_line <- function(state, .data=traffic_fines, timevar=Offence_Month){
-#   
-#   #all_times <- unique(.data$timevar)
-# 
-#   timestatecount <- .data %>%
-#   filter(Rego_State==state) %>%
-#   group_by({{ timevar }}) %>%
-#   summarise(obscount=n())
-#   
-#   return(timestatecount)
-# }
-
+# Get list of States in the Data
 getstates <- as.vector(levels(traffic_fines$Rego_State),mode="list")
 names(getstates) <- levels(traffic_fines$Rego_State)
 names(getstates)[1] <- "Missing"
@@ -48,19 +38,16 @@ names(getstates)[1] <- "Missing"
 
 ## Offences Per Month Plot
 
-```{r facet_plots}
+```{r facet_plots, echo=FALSE}
 ggplot(data=monthly_fines %>% filter(Rego_State %in% c("ACT","QLD","NSW","WA","NT")), aes(x=Offence_Month, y=offence_count) ) +
   geom_line() +
   facet_grid(Rego_State ~ .) +
   ggtitle("Number of Offences By Time and Vehicle Registration State") + xlab("Time") + ylab("Offence Count")
 
-ggsave("Offence_timeline_state")
-
 ```
 
+## Interacive Shiny Plot
 ```{r plotdata, echo=FALSE}
-# TODO turn into facet plot
-# TODO screenshot interactive app
 
 # Add checkboxes for State
 checkboxGroupInput("checkGroup", 
@@ -74,9 +61,13 @@ renderPlot({
   # Filter data based on ueser input
   monthly_fines_filtered <- monthly_fines %>% filter(Rego_State %in% input$checkGroup)
   
+  # Plot New Series
   ggplot(data=monthly_fines_filtered, aes(x=Offence_Month, y=offence_count, col=Rego_State) ) +
     geom_line() +
-    geom_smooth() 
+    geom_smooth() +
+    ggtitle("Number of Offences By Time and Vehicle Registration State") + 
+    xlab("Time") + 
+    ylab("Offence Count") 
 
 })
 
